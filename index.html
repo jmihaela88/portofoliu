@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Your Name | Student Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Animated Background */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:200%;
+    height:200%;
+    background:
+        radial-gradient(circle,#3b82f620 0%,transparent 30%),
+        radial-gradient(circle,#8b5cf620 0%,transparent 25%),
+        radial-gradient(circle,#06b6d420 0%,transparent 25%);
+    animation:bgMove 18s linear infinite;
+    z-index:-2;
+}
+
+@keyframes bgMove{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(-15%,-10%);
+    }
+}
+
+/* Navbar */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 10%;
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.1);
+    z-index:1000;
+}
+
+nav h2{
+    color:#38bdf8;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+/* Sections */
+
+section{
+    min-height:100vh;
+    padding:120px 10%;
+}
+
+.glass{
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(18px);
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.08);
+    padding:40px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+/* Hero */
+
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:60px;
+}
+
+.hero-text h1{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.hero-text h2{
+    color:#38bdf8;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    color:#cbd5e1;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+button{
+    background:#38bdf8;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    border-radius:50px;
+    cursor:pointer;
+    transition:.3s;
+    font-size:16px;
+}
+
+button:hover{
+    transform:translateY(-5px);
+    background:#0ea5e9;
+}
+
+.hero-photo{
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#38bdf8,#8b5cf6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:130px;
+}
+
+/* Titles */
+
+.title{
+    font-size:40px;
+    margin-bottom:40px;
+    color:#38bdf8;
+}
+
+/* Skills */
+
+.skill{
+    margin:25px 0;
+}
+
+.skill span{
+    display:block;
+    margin-bottom:8px;
+}
+
+.bar{
+    height:12px;
+    background:#1e293b;
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.progress{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,#38bdf8,#8b5cf6);
+    border-radius:30px;
+    transition:2s;
+}
+
+/* Projects */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.card{
+    padding:25px;
+    border-radius:18px;
+    background:rgba(255,255,255,.04);
+    transition:.4s;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+.card h3{
+    margin-bottom:10px;
+    color:#38bdf8;
+}
+
+/* Timeline */
+
+.timeline{
+    border-left:3px solid #38bdf8;
+    padding-left:25px;
+}
+
+.timeline-item{
+    margin-bottom:35px;
+}
+
+.timeline-item h3{
+    color:#38bdf8;
+}
+
+/* Contact */
+
+.contact p{
+    margin:12px 0;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#94a3b8;
+}
+
+/* Animation */
+
+.hidden{
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(max-width:900px){
+
+.hero{
+flex-direction:column-reverse;
+text-align:center;
+}
+
+.hero-text h1{
+font-size:42px;
+}
+
+nav{
+padding:20px;
+}
+
+nav ul{
+gap:15px;
+font-size:14px;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<nav>
+
+<h2>MyPortfolio</h2>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#resume">Resume</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+<section>
+
+<div class="hero">
+
+<div class="hero-text">
+
+<h1>Your Name</h1>
+
+<h2>Computer Science Student</h2>
+
+<p>
+Write a short introduction about yourself.
+Explain what technologies you enjoy,
+what kind of internships or IT jobs
+you're looking for, and what motivates you.
+</p>
+
+<button onclick="document.getElementById('contact').scrollIntoView()">
+Contact Me
+</button>
+
+</div>
+
+<div class="hero-photo">
+👨‍💻
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<div class="glass hidden">
+
+<h2 class="title">About Me</h2>
+
+<p>
+
+Write about yourself here.
+
+Examples:
+
+✔ University
+
+✔ Degree
+
+✔ Interests
+
+✔ Programming passion
+
+✔ Career goals
+
+✔ Soft skills
+
+</p>
+
+</div>
+
+</section>
+
+<section id="skills">
+
+<div class="glass hidden">
+
+<h2 class="title">Skills</h2>
+
+<div class="skill">
+<span>HTML / CSS</span>
+<div class="bar">
+<div class="progress" style="width:90%"></div>
+</div>
+</div>
+
+<div class="skill">
+<span>JavaScript</span>
+<div class="bar">
+<div class="progress" style="width:80%"></div>
+</div>
+</div>
+
+<div class="skill">
+<span>Python</span>
+<div class="bar">
+<div class="progress" style="width:85%"></div>
+</div>
+</div>
+
+<div class="skill">
+<span>Java</span>
+<div class="bar">
+<div class="progress" style="width:75%"></div>
+</div>
+</div>
+
+<div class="skill">
+<span>SQL</span>
+<div class="bar">
+<div class="progress" style="width:70%"></div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="projects">
+
+<div class="hidden">
+
+<h2 class="title">Projects</h2>
+
+<div class="projects">
+
+<div class="card">
+<h3>Project One</h3>
+<p>
+Describe your project.
+Mention technologies used,
+your role,
+and what you learned.
+</p>
+</div>
+
+<div class="card">
+<h3>Project Two</h3>
+<p>
+Describe another project here.
+Include GitHub link later.
+</p>
+</div>
+
+<div class="card">
+<h3>Project Three</h3>
+<p>
+Personal project, university assignment,
+hackathon, etc.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="education">
+
+<div class="glass hidden">
+
+<h2 class="title">Education</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>University Name</h3>
+<p>2023 - Present</p>
+<p>
+Bachelor of Computer Science
+
+Add courses,
+achievements,
+GPA if desired.
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>High School</h3>
+<p>Graduation Year</p>
+<p>
+Anything worth mentioning.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="resume">
+
+<div class="glass hidden">
+
+<h2 class="title">Resume</h2>
+
+<p>
+
+Upload your CV as <strong>resume.pdf</strong>
+and replace the button link.
+
+</p>
+
+<br>
+
+<button onclick="window.open('resume.pdf')">
+Download CV
+</button>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="glass hidden contact">
+
+<h2 class="title">Contact</h2>
+
+<p>📧 your.email@example.com</p>
+
+<p>📱 +40 XXX XXX XXX</p>
+
+<p>💻 github.com/yourusername</p>
+
+<p>🔗 linkedin.com/in/yourname</p>
+
+<p>📍 City, Country</p>
+
+</div>
+
+</section>
+
+<footer>
+
+Designed & Built by You © 2026
+
+</footer>
+
+<script>
+
+// Scroll animations
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{threshold:.2});
+
+document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
+
+// Animate skill bars
+
+window.addEventListener("load",()=>{
+
+document.querySelectorAll(".progress").forEach(bar=>{
+
+let width=bar.style.width;
+bar.style.width="0";
+
+setTimeout(()=>{
+
+bar.style.width=width;
+
+},500);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
